@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Student</title>
+  </head>
+  <body>
+    <!-- Home Link -->
+    <a href="/">Home</a>
+    <h1>Update Student</h1>
+    <!-- Display Validation Errors -->
+    <% if (errors.length > 0) { %>
+    <ul>
+      <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    <!-- Update Student Form -->
+    <form action="/students/edit/<%= student.sid %>" method="POST">
+      <!-- Student ID -->
+      <label for="sid">Student ID:</label>
+      <input
+        type="text"
+        id="sid"
+        name="sid"
+        value="<%= student.sid %>"
+        readonly
+      /><br />
+      <!-- Name -->
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="<%= student.name %>"
+        required
+      /><br />
+      <!-- Age -->
+      <label for="age">Age:</label>
+      <input
+        type="number"
+        id="age"
+        name="age"
+        value="<%= student.age %>"
+        required
+      /><br />
+      <!-- Add Button -->
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>

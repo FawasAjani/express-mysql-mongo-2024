@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecturers</title>
+  </head>
+  <body>
+    <!-- Display an error message if there is an issue-->
+    <% if (typeof error !== 'undefined') { %>
+    <h1>Errror Message</h1>
+    <!-- Homepage -->
+    <a href="/">Home</a>
+    <h2>
+      Error Message: Cannot delete lecturer <%= error %>. He/She has associated
+      modules.
+    </h2>
+    <!--  display the lecturers in a table -->
+    <% } else { %>
+    <h1>Lecturers</h1>
+    <!--Links to Add Lecturer Page and Home Page -->
+    <a href="/lecturers/add">Add Lecturer</a><br />
+    <a href="/">Home</a>
+    <table border="1">
+      <tr>
+        <th>Lecturer ID</th>
+        <th>Name</th>
+        <th>Department ID</th>
+        <th>Action</th>
+      </tr>
+      <!--  lecturers array to populate the table -->
+      <% lecturers.forEach(lecturer => { %>
+      <tr>
+        <td><%= lecturer._id %></td>
+        <td><%= lecturer.name %></td>
+        <td><%= lecturer.did %></td>
+        <!-- Link to Delete the lecturer -->
+        <td>
+          <a href="/lecturers/delete/<%= lecturer._id %>">Delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!--grade.ejs-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grades</title>
+  </head>
+  <body>
+    <h1>Grades</h1>
+    <!-- Homepage-->
+    <a href="/">Home</a>
+    <!-- Table for displaying student grades  -->
+    <table border="1">
+      <tr>
+        <!--Student-->
+        <th>Student</th>
+         <!--Module-->
+        <th>Module</th>
+        <!--Grade-->
+        <th>Grade</th>
+      </tr>
+      <!-- groupedGrades object to populate the table -->
+      <% Object.keys(groupedGrades).forEach(studentName => { const grades =
+      groupedGrades[studentName]; if (grades.length === 0) { %>
+      <tr>
+        <td><%= studentName %></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- empty row for students with no grades -->
+      <% } else { %> 
+        <% grades.forEach(grade => { %>
+      <tr>
+        <td><%= studentName %></td>
+        <td><%= grade.moduleName || "" %></td>
+        <td><%= grade.grade || "" %></td>
+      </tr>
+      <% }); %> <% } }); %>
+    </table>
+  </body>
+</html>

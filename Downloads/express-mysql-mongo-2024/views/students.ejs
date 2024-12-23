@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students</title>
+  </head>
+  <body>
+    <h1>Students</h1>
+    <nav>
+      <!-- vLink to Add Student Page-->
+      <a href="/students/add">Add Student</a><br />
+      <!-- Link to Home Page -->
+      <a href="/">Home</a><br />
+    </nav>
+    <!-- Displaying the list of students -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Array to display student details -->
+        <% students.forEach(student => { %>
+        <tr>
+          <td><%= student.sid %></td>
+          <td><%= student.name %></td>
+          <td><%= student.age %></td>
+          <td>
+            <!--  Link to Update Student Page-->
+            <a href="/students/edit/<%= student.sid %>">Update</a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
